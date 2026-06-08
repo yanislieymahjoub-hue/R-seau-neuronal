@@ -5,7 +5,7 @@ def réseau_neuronal(entrées,poids,biais):
     return 1 / (1 + exp(-res))
 
 A = réseau_neuronal ([1.0,2.0],[8.0,9.0],7.0)
-print(A)
+
 
 
 def couche(entrées,neurone):
@@ -33,5 +33,30 @@ def IA (entrées, couche1, couche2):
     return fu
 
 C = IA([0.0,1.0],neurones, neurones2)
-print (C)
-    
+
+
+def cout (prédiction, attendu):
+    res = (prédiction - attendu)**2
+    return res
+
+D = cout (0.1,1)
+
+
+def gradient (w,x,attendu,epsilon) : 
+    prediction = w * x
+    cout1 = cout(prediction, attendu)
+    new_prediction = (w + epsilon) * x
+    cout2 = cout(new_prediction, attendu)
+    return (cout2 - cout1) / epsilon
+
+E = gradient (0.5, 1.0, 1.0, 0.0001)
+print (E)
+
+def entrainement(w,x,attendu,epsilon,lr,nb_itérations):
+    for i in range (nb_itérations) :
+        grad = gradient (w,x,attendu,epsilon)
+        w = w - (lr*grad)
+    return w
+
+F = entrainement (0.5,1.0,1.0,0.0001,0.1,5)
+print (F)
