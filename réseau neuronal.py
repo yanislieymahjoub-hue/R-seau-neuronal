@@ -21,6 +21,17 @@ neurones = [
     ([1.0, -2.0], 0.5),
     ([-3.0, 4.0], -1.0),]
 
+neurones2 = [
+    ([8.0, 7.0], 7.0),
+    ([1.0, -2.0], 0.5),
+    ([-3.0, 4.0], -1.0),]
 
-B = couche ([0.0,1.0],neurones)
-print (B)
+
+def IA (entrées, couche1, couche2):
+    fe = couche (entrées, couche1)
+    fu = couche (fe, couche2)
+    return fu
+
+C = IA([0.0,1.0],neurones, neurones2)
+print (C)
+    
